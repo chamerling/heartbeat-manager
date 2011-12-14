@@ -1,0 +1,30 @@
+#{extends 'main.html' /}
+#{set title:'HeartBeats' /}
+
+<div class="well">
+	<p align="center">HTTP hosts are called each hour, if something is bad, you will receive a report by email...</p>
+	<p align="center"><a href="@{Application.checkStatus()}" class="btn danger">Check Now!</a></p>
+</div>
+
+#{if hosts}
+	<table class="zebra-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Host Name</th>
+            <th>Last Success</th>
+            <th>Last Ping</th>
+          </tr>
+        </thead>
+        <tbody>
+        #{list hosts, as : 'h'}
+          <tr>
+            <td>#{if h.lastPing == 0}<span class="label">??</span>#{/if}#{else}#{if h.lastSuccess == h.lastPing}<span class="label success">OK</span>#{/if}#{else}<span class="label important">KO</span>#{/else}#{/else}</td>
+            <td><b><a href="@{Application.hostInfo(h.id)}"">${h.hostname}</a></b></td>
+            <td>#{if h.lastSuccess == 0}-#{/if}#{else}${new Date(h.lastSuccess).format('dd MMMM yyyy hh:mm:ss')}#{/else}</td>
+            <td>#{if h.lastPing == 0}-#{/if}#{else}${new Date(h.lastPing).format('dd MMMM yyyy hh:mm:ss')}#{/else}</td>
+          </tr>
+        #{/list}
+        </tbody>
+      </table>
+#{/if}

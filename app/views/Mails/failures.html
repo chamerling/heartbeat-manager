@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+	</head>
+<body>
+<h2>HeartBeat Report</h2>
+
+#{if !hosts}
+	<b>No problem!</b>
+#{/if}
+#{else}
+There are several problems joining these hosts:
+        <ul>
+        #{list hosts, as : 'h'}
+        	<li><span class="label important">${h.hostname}</span></li>
+        #{/list}
+        </ul>
+#{/else}
+</body>
+</html>

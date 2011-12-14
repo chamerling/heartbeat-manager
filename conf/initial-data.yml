@@ -1,0 +1,18 @@
+# YAML file
+
+Host(foo):
+    hostname: http://localhost:9990/foo/
+    lastPing: 0L
+    
+Host(bar):
+    hostname: http://localhost:9991/bar/
+    lastPing: 0L
+
+Host(googlefr):
+    hostname: http://www.google.fr
+    lastPing: 0L
+
+Host(googlecom):
+    hostname: http://www.google.com
+    lastPing: 0L
+    

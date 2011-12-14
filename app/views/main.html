@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/application.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body span="60 px">
+    
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <h3><a href="@{Application.index()}">HeartBeat Manager</a></h3>
+          <ul class="nav secondary-nav">
+          	<li><a href="/admin">Manage</a></li>
+          </ul>
+        </div>
+      </div> <!-- /fill -->
+    </div>
+    
+  <div class="container">
+  
+  #{if flash.success}
+	<div class="alert-message success">
+        <a class="close" href="#">&times;</a>
+        <p><strong>${flash.success}</strong></p>
+      </div>
+  #{/if}
+  #{if flash.error}
+	<div class="alert-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>${flash.error}</strong></p>
+      </div>
+  #{/if}
+
+     #{doLayout /}
+  </div>
+  </body>
+</html>
