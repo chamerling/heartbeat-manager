@@ -34,7 +34,6 @@ import models.Host;
 public class Mails extends Mailer {
 	
 	public static final void failures(List<Host> hosts) throws EmailException {
-		System.out.println("Sending failure mail...");
 		if (hosts == null || hosts.size() == 0) {
 			return;
 		}
@@ -54,4 +53,10 @@ public class Mails extends Mailer {
 		send(hosts);
 	}
 	
+	public static final void ok() throws EmailException {
+		setFrom(Play.configuration.getProperty("mail.smtp.user"));
+		addRecipient(Play.configuration.getProperty("heartbeat.recipient"));
+		setSubject("HeartBeat Daily Report");
+		send();
+	}
 }

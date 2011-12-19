@@ -40,7 +40,6 @@ public class ReportingJob extends Job<String> {
 	 */
 	@Override
 	public void doJob() throws Exception {
-		System.out.println("Fire Report");
 		List<Host> result = new ArrayList<Host>();
 		List<Host> hosts = Host.findAll();
 		for (Host host : hosts) {
@@ -51,6 +50,8 @@ public class ReportingJob extends Job<String> {
 
 		if (result.size() > 0) {
 			Mails.failures(result);
+		} else {
+			Mails.ok();
 		}
 	}
 }
